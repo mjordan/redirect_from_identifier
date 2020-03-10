@@ -1,5 +1,7 @@
-<div id="media-formats-reports-report-type-form">{{ form }}</div>
-  {% if show_csv_link %}
-    <div id="media-formats-reports-csv_link"><a href="{{ csv_url }}">Download the CSV</a></div>
+<div id="redirect-from-identifier-list">
+  {% if ids %}
+  {% for id in ids %}
+    <p>ID is {{ id }} </p>
+  {% endfor %}
   {% endif %}
-<div id="media-formats-reports-content"><canvas id="media-formats-reports-chart"></canvas></div>
+</div>

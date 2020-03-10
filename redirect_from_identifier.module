@@ -11,7 +11,7 @@
 function redirect_from_identifier_theme($existing, $type, $theme, $path) {
   return [
     'redirect_from_identifier' => [
-      'variables' => [],
+      'variables' => ['ids' => null],
     ],
   ];
 }
@@ -23,4 +23,9 @@ function template_preprocess_redirect_from_identifier(&$variables) {
   $variables['attributes'] = [
     'id' => ['redirect_from_identifier'],
   ];
+  if ($variables['ids']) {
+    // Get all entities with the id (entity types are an admin option).
+    // Load each entity, and retun a list (one item per entity) with the
+    // title and a link to it.
+  }
 }

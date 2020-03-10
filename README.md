@@ -2,7 +2,7 @@
 
 ## Introduction
 
-A Drupal 8 module that redirects requests from `/identifier/{identifier]` to the entity that has the value of `{identifier}` in one of the configured fields. 
+A Drupal 8 module that redirects requests from `/identifier/{identifier}` to the entity that has the value of `{identifier}` in one of the configured fields. 
 
 ## Overview
 
