@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * @file
+ * Contains the redirect_from_identifier.module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function redirect_from_identifier_theme($existing, $type, $theme, $path) {
+  return [
+    'redirect_from_identifier' => [
+      'variables' => [],
+    ],
+  ];
+}
+
+/**
+ * Default preprocessor function for the redirect_from_identifier hook.
+ */
+function template_preprocess_redirect_from_identifier(&$variables) {
+  $variables['attributes'] = [
+    'id' => ['redirect_from_identifier'],
+  ];
+}

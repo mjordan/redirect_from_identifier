@@ -1,0 +1,3 @@
+services:
+  redirect_from_identifier.datasource.field:
+    class: Drupal\redirect_from_identifier\Plugin\DataSource\Field

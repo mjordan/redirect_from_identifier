@@ -1,0 +1,16 @@
+redirect_from_identifier.admin_settings:
+  path: '/admin/config/redirect_from_identifier'
+  defaults:
+    _form: '\Drupal\redirect_from_identifier\Plugin\Form\RedirectFromIdentifierSettingsForm'
+    _title: 'Redirect from identifier'
+  requirements:
+    _permission: 'administer site configuration'
+
+redirect_from_identifier.redirect:
+  path: '/identifier/{identifier}'
+  defaults:
+    _controller: '\Drupal\redirect_from_identifier\Controller\RedirectFromIdentifierController::main'
+    _title: ''
+  requirements:
+    _permission: 'access content'
+
