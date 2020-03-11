@@ -5,20 +5,10 @@ namespace Drupal\redirect_from_identifier\Plugin\DataSource;
 use Drupal\redirect_from_identifier\Plugin\DataSource\RedirectFromIdentifierDataSourceInterface;
 
 /**
- * Data source that gets media counts by MIME type.
+ * Data source that gets node IDs from a query against configurable fields.
  *
  */
 class Field implements RedirectFromIdentifierDataSourceInterface {
-
-  /**
-   * Returns the data source's name.
-   *
-   * @return string
-   *   The name of the data source.
-   */
-  public function getName() {
-    return t('Field value');
-  }
 
   /**
    * Gets the data.

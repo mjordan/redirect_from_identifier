@@ -8,14 +8,6 @@ namespace Drupal\redirect_from_identifier\Plugin\DataSource;
 interface RedirectFromIdentifierDataSourceInterface {
 
   /**
-   * Returns the data source's name.
-   *
-   * @return string
-   *   The name of the data source as it appears in the reports form.
-   */
-  public function getName();
-
-  /**
    * Gets the data.
    *
    * @param string $identifier

@@ -1,14 +1,12 @@
 # Redirect From Identifier
 
-## Introduction
-
-A Drupal 8 module that redirects requests from `/identifier/{identifier}` to the node that has the value of `{identifier}` in one of the configured fields. 
-
 ## Overview
 
-This module is useful for enabling URLs that do not rely on node IDs. The standard way to do this is to use the Drupal core URL alias functionality. But, the Redirect From Identifer module allows you to assign a URL to a node before the node exists in Drupal, or for people to compose a link to a node if they don't know its node ID but do know its identifier (for example in external systems). The original use case for this functionality was to be able to mint URLs for electronic theses in an upstream workflow before the thesis was ingested into a Drupal-based institutional repository.
+This Drupal module redirects requests from `/identifier/{identifier}` to the node that has the value of `{identifier}` in one of the configured fields. This functionality enables URLs that do not rely on node IDs. The standard way to do this is to use the Drupal core URL alias functionality. But, the Redirect From Identifer module allows you to assign a URL to a node before the node exists in Drupal, or for people to compose a link to a node if they don't know its node ID but do know its identifier (for example in external systems). The original use case for this functionality was to be able to mint URLs for electronic theses in an upstream workflow before the thesis was ingested into a Drupal-based institutional repository.
 
 If a user goes to `/identifier/{identifier}`, they will be automatically redirected to the node that has `{identifier}` as a value in one of the fields configurable by the site administrator. Although it is unlikely to happen in the wild, if an identifer resolves to more than one node, the user is presented with a list of all the nodes and gets to choose the one they want.
+
+If the identifier included in the URL does not resolve to any nodes, Drupal responds with a 404 Not Found.
 
 ## Configuration
 
