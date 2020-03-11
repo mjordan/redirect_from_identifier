@@ -5,6 +5,7 @@ namespace Drupal\redirect_from_identifier\Controller;
 use Drupal\Core\Controller\ControllerBase;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Controller.
@@ -23,21 +24,18 @@ class RedirectFromIdentifierController extends ControllerBase {
    *    return/throw a 404 response.
    */
   public function main($identifier) {
-    // @todo: Perform security checks on the identifier, maybe
-    // allowing admins to enter a set of non-alphnumeric characterw
-    // they will permit in incoming identifiers, e.g., ':_-'.
-    // if ()) {
-      // throw new AccessDeniedHttpException();
-    // }
+    // Even though query against db is parameterized, do
+    // some basic checks here for suspicious characters.
+    if (preg_match('/[\\\'`"\s]/', $identifier)) {
+      throw new AccessDeniedHttpException();
+    }
 
     $data_source = \Drupal::service('redirect_from_identifier.datasource.field');
     $ids = $data_source->getData(trim($identifier));
 
-    // @todo: don't use this, return a 404.
+    // Provided identifier didn't match anythin.
     if (count($ids) === 0) {
-      return [
-        '#markup' => $this->t('Sorry, nothing found that uses that identifier')
-      ];
+      throw new NotFoundHttpException();
     }
     // If there's more than one member of $ids, render the template with all corresponding URLs.
     if (count($ids) === 1) {
@@ -47,6 +45,8 @@ class RedirectFromIdentifierController extends ControllerBase {
       $response->send();
       return $response;
     }
+    // If there is more than one entity found, allow the user to choose
+    // one they want.
     if (count($ids) > 1) {
       return [
         '#ids' => $ids,

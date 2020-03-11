@@ -1,2 +1,2 @@
-redirect_from_identifier_target_entities: 'node'
-redirect_from_identifier_target_fields: 'field_identifier'
+redirect_from_identifier_target_fields: 'field_identifier,field_local_identifier'
+redirect_from_identifier_multiple_node_message: 'The identifier in the URL resolves to the following items:'

@@ -24,8 +24,17 @@ function template_preprocess_redirect_from_identifier(&$variables) {
     'id' => ['redirect_from_identifier'],
   ];
   if ($variables['ids']) {
-    // Get all entities with the id (entity types are an admin option).
-    // Load each entity, and retun a list (one item per entity) with the
-    // title and a link to it.
+    $config = \Drupal::config('redirect_from_identifier.settings');
+    $variables['message'] = $config->get('redirect_from_identifier_multiple_node_message');
+
+    // Get each node, and its label and URL.
+    $variables['nodes'] = [];
+    foreach ($variables['ids'] as $id) {
+      $entity = \Drupal::entityTypeManager()->getStorage('node')->load($id);
+      $node_data = [];
+      $node_data['label'] = $entity->label();
+      $node_data['url'] = $entity->toUrl()->toString();
+      $variables['nodes'][] = $node_data;
+    }
   }
 }

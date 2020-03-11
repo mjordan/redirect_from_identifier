@@ -31,19 +31,19 @@ class RedirectFromIdentifierSettingsForm extends ConfigFormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     $config = $this->config('redirect_from_identifier.settings');
-    $form['redirect_from_identifier_target_entities'] = [
-      '#type' => 'textfield',
-      '#maxlength' => 256,
-      '#title' => $this->t('Entities'),
-      '#default_value' => $config->get('redirect_from_identifier_target_entities'),
-      '#description' => $this->t('The machine name of the entity type that can be redirected to.'), 
-    ];
     $form['redirect_from_identifier_target_fields'] = [
       '#type' => 'textfield',
       '#maxlength' => 256,
       '#title' => $this->t('Identifer fields'),
       '#default_value' => $config->get('redirect_from_identifier_target_fields'),
-      '#description' => $this->t('A comma-separated list of machine names of fields that store identifiers.'),
+      '#description' => $this->t('A comma-separated list of machine names of node fields that store identifiers.'),
+    ];
+    $form['redirect_from_identifier_multiple_node_message'] = [
+      '#type' => 'textfield',
+      '#maxlength' => 256,
+      '#title' => $this->t('Multiple node message'),
+      '#default_value' => $config->get('redirect_from_identifier_multiple_node_message'),
+      '#description' => $this->t('A message to show users when the identifier resolves to multiple nodes.'),
     ];
 
     return parent::buildForm($form, $form_state);
@@ -55,7 +55,7 @@ class RedirectFromIdentifierSettingsForm extends ConfigFormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $this->configFactory->getEditable('redirect_from_identifier.settings')
       ->set('redirect_from_identifier_target_fields', $form_state->getValue('redirect_from_identifier_target_fields'))
-      ->set('redirect_from_identifier_target_entities', $form_state->getValue('redirect_from_identifier_target_entities'))
+      ->set('redirect_from_identifier_multiple_node_message', $form_state->getValue('redirect_from_identifier_multiple_node_message'))
       ->save();
 
     parent::submitForm($form, $form_state);

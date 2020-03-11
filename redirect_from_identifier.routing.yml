@@ -10,7 +10,7 @@ redirect_from_identifier.redirect:
   path: '/identifier/{identifier}'
   defaults:
     _controller: '\Drupal\redirect_from_identifier\Controller\RedirectFromIdentifierController::main'
-    _title: 'Redirecting from identifier'
+    _title: 'Please note'
   requirements:
     _permission: 'access content'
 

@@ -1,5 +1,5 @@
 system.redirect_from_identifier_settings:
-  title: 'Redirect from identifier'
+  title: 'Redirect from Identifier'
   parent: system.admin_config_search
   route_name: redirect_from_identifier.admin_settings
   description: 'Confgure Redirect From Identifier settings.'

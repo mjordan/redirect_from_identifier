@@ -31,15 +31,12 @@ class Field implements RedirectFromIdentifierDataSourceInterface {
    */
   public function getData($identifier) {
     $config = \Drupal::config('redirect_from_identifier.settings');
-    // Only one entity, at least for now.
-    $entity = $config->get('redirect_from_identifier_target_entities');
     $fields = explode(',', $config->get('redirect_from_identifier_target_fields'));
 
-    $query = \Drupal::entityQuery($entity);
     $ids = [];
-    // Using multiple fields doesn't work yet, we probably need to use an orCondition or something.
-    foreach ($fields as $field) {
-      $query->condition($field, $identifier, '=');
+    foreach ($fields as $field_name) {
+      $query = \Drupal::entityQuery('node');
+      $query->condition(trim($field_name), $identifier, '=');
       $results = $query->execute();
       $ids = array_merge($ids, array_values($results));
     }

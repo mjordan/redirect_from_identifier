@@ -1,7 +1,10 @@
 <div id="redirect-from-identifier-list">
-  {% if ids %}
-  {% for id in ids %}
-    <p>ID is {{ id }} </p>
-  {% endfor %}
+  {% if nodes %}
+    <p>{{ message }}</p>
+    <ul>
+    {% for node in nodes %}
+      <li><a href="{{ node.url }}">{{ node.label }}</a></li>
+    {% endfor %}
+    </ul>
   {% endif %}
 </div>
