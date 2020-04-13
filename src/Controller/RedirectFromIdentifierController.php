@@ -33,7 +33,7 @@ class RedirectFromIdentifierController extends ControllerBase {
     $data_source = \Drupal::service('redirect_from_identifier.datasource.field');
     $ids = $data_source->getData(trim($identifier));
 
-    // Provided identifier didn't match anythin.
+    // Provided identifier didn't match anything.
     if (count($ids) === 0) {
       throw new NotFoundHttpException();
     }
