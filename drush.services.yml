@@ -1,6 +1,0 @@
-services:
-  # For dev purposes only.
-  redirect_from_identifier.commands:
-    class: \Drupal\redirect_from_identifier\Command\RedirectFromIdentifierCommands
-    tags:
-      - { name: drush.command }
