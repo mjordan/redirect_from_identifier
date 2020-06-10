@@ -32,15 +32,13 @@ class RedirectFromIdentifierSettingsForm extends ConfigFormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     $config = $this->config('redirect_from_identifier.settings');
     $form['redirect_from_identifier_target_fields'] = [
-      '#type' => 'textfield',
-      '#maxlength' => 256,
+      '#type' => 'textarea',
       '#title' => $this->t('Identifer fields'),
       '#default_value' => $config->get('redirect_from_identifier_target_fields'),
-      '#description' => $this->t('A comma-separated list of machine names of node fields that store identifiers.'),
+      '#description' => $this->t('Macine names of node fields (from any content type) that store identifiers. One per line'),
     ];
     $form['redirect_from_identifier_multiple_node_message'] = [
-      '#type' => 'textfield',
-      '#maxlength' => 256,
+      '#type' => 'textarea',
       '#title' => $this->t('Multiple node message'),
       '#default_value' => $config->get('redirect_from_identifier_multiple_node_message'),
       '#description' => $this->t('A message to show users when the identifier resolves to multiple nodes.'),
