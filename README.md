@@ -19,6 +19,8 @@ Go to `admin/config/redirect_from_identifier` and enter a comma-delimited list o
 
 * [Drupal 8](https://github.com/Islandora/islandora)
 
+This module is Drupal 9 ready.
+
 ## Installation
 
 1. Clone this repo into your Islandora's `drupal/web/modules/contrib` directory.
