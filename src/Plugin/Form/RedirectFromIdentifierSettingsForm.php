@@ -31,11 +31,17 @@ class RedirectFromIdentifierSettingsForm extends ConfigFormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     $config = $this->config('redirect_from_identifier.settings');
+    $form['redirect_from_identifier_routes'] = [
+      '#type' => 'textarea',
+      '#title' => $this->t('Paths'),
+      '#default_value' => $config->get('redirect_from_identifier_routes'),
+      '#description' => $this->t('Paths that will respond with redirects. Include the leading / and the placeholder {identifier} for the identifier. One path per line. Note: You will need to clear your Drupal cache for changes to this setting to take effect.'),
+    ];
     $form['redirect_from_identifier_target_fields'] = [
       '#type' => 'textarea',
       '#title' => $this->t('Identifer fields'),
       '#default_value' => $config->get('redirect_from_identifier_target_fields'),
-      '#description' => $this->t('Macine names of node fields (from any content type) that store identifiers. One per line'),
+      '#description' => $this->t('Macine names of node fields (from any content type) that store identifiers. One per line.'),
     ];
     $form['redirect_from_identifier_multiple_node_message'] = [
       '#type' => 'textarea',
@@ -52,6 +58,7 @@ class RedirectFromIdentifierSettingsForm extends ConfigFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $this->configFactory->getEditable('redirect_from_identifier.settings')
+      ->set('redirect_from_identifier_routes', $form_state->getValue('redirect_from_identifier_routes'))
       ->set('redirect_from_identifier_target_fields', $form_state->getValue('redirect_from_identifier_target_fields'))
       ->set('redirect_from_identifier_multiple_node_message', $form_state->getValue('redirect_from_identifier_multiple_node_message'))
       ->save();

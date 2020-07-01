@@ -1,2 +1,3 @@
+redirect_from_identifier_routes: '/identifier/{identifier}'
 redirect_from_identifier_target_fields: 'field_identifier'
 redirect_from_identifier_multiple_node_message: 'The identifier in the URL resolves to the following items:'
