@@ -2,3 +2,4 @@ name: 'Redirect From Identifier'
 description: "Redirects requests from /idenifier/{identifier] to the applicable entity."
 type: module
 core: 8.x
+core_version_requirement: ^8 || ^9
