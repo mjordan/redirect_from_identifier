@@ -1,0 +1,15 @@
+{
+  "name": "mjordan/redirect_from_identifier",
+  "description": "Drupal module that redirects requests from /identifier/{identifier} (or other configured paths) to the node that has the value of {identifier} in one of the configured fields.",
+  "type": "drupal-module",
+  "keywords": ["Drupal"],
+  "homepage": "https://github.com/mjordan/redirect_from_identifier",
+  "license": "GPL-2.0+",
+  "authors": [
+    {
+      "name": "Mark Jordan",
+      "email": "mjordan@sfu.ca",
+      "role": "Maintainer"
+    }
+  ]
+}
