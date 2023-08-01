@@ -24,6 +24,7 @@ class Field implements RedirectFromIdentifierDataSourceInterface {
     foreach ($fields as $field_name) {
       $query = \Drupal::entityQuery('node');
       $query->condition(trim($field_name), trim($identifier), '=');
+      $query->accessCheck(TRUE);
       $results = $query->execute();
       if (count($results) == 0) {
         continue;
