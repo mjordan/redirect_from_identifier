@@ -17,9 +17,7 @@ Go to `admin/config/redirect_from_identifier` and enter a comma-delimited list o
 
 ## Requirements
 
-* [Drupal 8](https://github.com/Islandora/islandora)
-
-This module is Drupal 9 ready.
+* [Drupal](https://github.com/Islandora/islandora) 9.x or 10.x.
 
 ## Installation
 
